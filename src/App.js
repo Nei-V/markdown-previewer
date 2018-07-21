@@ -9,20 +9,26 @@ class App extends Component {
  
   constructor(props) {
     super(props);
-    this.state=this.props.input;
+    //this.state=this.props.input;
+    //version 2:the line above is not needed because I update fields directly from Redux - dumb component
     this.handleChange = this.handleChange.bind(this);
    
   }
   
   handleChange(event) {
     console.log("event value in handlechange: ",event.target.value);
-    //this.props.submitNewInput("");
+   /*
+    this.setState({
+      showText:this.state.input,
+    })
+
+    version 2: this.setState - is not needed  because I update fields directly from Redux   */
     this.props.submitNewInput(event.target.value);
     
   }
 
 render() {
-  console.log("state ",this.state);
+  //console.log("state ",this.state);
   
   return (
     <div className="App">
@@ -34,9 +40,11 @@ render() {
         To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         
-      <textarea id="editor" value={this.state.showText} onChange={this.handleChange} >blue</textarea>
+      <textarea id="editor" value={this.props.input.showText} onChange={this.handleChange} >blue</textarea>
+      {/*version 2: in line above value={this.state.showText} if I update field from React*/}
       <section id="preview">
-      {this.state.showText}
+      {this.props.input.showText}
+      {/*version 2: in line above {this.state.showText} instead if I update field from React*/}
       </section>
     </div>
   );
