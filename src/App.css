@@ -26,3 +26,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+#preview > h1{
+  color:red;
+}
+td {
+  border:solid;
+  border-width:2px;
+  border-color:blue;
+}
