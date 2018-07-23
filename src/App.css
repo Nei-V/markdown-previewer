@@ -1,7 +1,41 @@
+
+
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 3;
+  grid-template-areas: 'header' 'main' 'footer1';
+  grid-gap: 10px;
 }
 
+
+@media screen and (min-width:800px) {
+  .App {
+      grid-template-columns: 2;
+      grid-template-rows: 2;
+      grid-template-areas: 'nav main' 'footer footer1';
+  }
+}
+
+
+footer {
+  text-align: center;
+  border-top: 1px solid rgb(45, 45, 68);
+  max-height: max-content;
+  grid-area: footer1;
+  margin-top: -10px;
+}
+
+footer p {
+  font-size: 1em;
+}
+
+footer a img {
+  height: 2.5em;
+  margin-bottom: -02.em;
+}
+
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -35,3 +69,5 @@ td {
   border-width:2px;
   border-color:blue;
 }
+
+*/

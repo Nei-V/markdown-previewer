@@ -1,20 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component , Fragment} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { allText } from './actions/action1';
 import marked from 'marked';
-import highlight from 'marked';
+import {footer} from './constants';
 
+class Footer extends Component {
+  
+  
+  render () {
+    function createFooter(a) {
+      return { __html: a }
+    }
+    return (
+      <div id="footerInReact"  dangerouslySetInnerHTML={createFooter(footer)}>
+     
+      </div>
+    )
+  }
+}
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     //this.state=this.props.input;
     //version 2:the line above is not needed because I update fields directly from Redux - dumb component
     this.handleChange = this.handleChange.bind(this);
-
   }
 
   handleChange(event) {
@@ -23,14 +35,13 @@ class App extends Component {
      this.setState({
        showText:this.state.input,
      })
- 
-     version 2: this.setState - is not needed  because I update fields directly from Redux   */
+      version 2: this.setState - is not needed  because I update fields directly from Redux   */
     this.props.submitNewInput(event.target.value);
-
   }
 
   render() {
-    //console.log("state ",this.state);
+
+    //in markdown, open a link in a new window
     const renderer = new marked.Renderer();
     const linkRenderer = renderer.link;
     renderer.link = (href, title, text) => {
@@ -41,51 +52,44 @@ class App extends Component {
     marked.setOptions({
       tables: true,
       gfm: true,
-
+      breaks: true,
     })
 
-
-
     let d = marked(this.props.input.showText, { renderer });
-
 
     function createMarkup(a) {
       return { __html: a }
     }
-    console.log(d);
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <header>
+          {/*<img src={logo} className="App-logo" alt="logo" />*/}
           <h1 className="App-title">Markdown Previewer</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        <textarea id="editor" value={this.props.input.showText} onChange={this.handleChange} >blue</textarea>
+        <main>
+        <textarea id="editor" value={this.props.input.showText} onChange={this.handleChange} />
         {/*version 2: in line above value={this.state.showText} if I update field from React*/}
-        <section>
-
-          <div id="preview" dangerouslySetInnerHTML={createMarkup(d)} />
-          {/*version 2: in line above {this.state.showText} instead if I update field from React*/}
-        </section>
+        <div id="preview" dangerouslySetInnerHTML={createMarkup(d)} />
+        </main>
+        {/*version 2: in line above {this.state.showText} instead if I update field from React*/}
+       <Footer />
       </div>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 const mapStateToProps = (state) => {
-  return { input: state }
-}
-
+  return {input: state }
+      }
+      
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitNewInput: (text) => {
-      console.log("text in mapDispatch: ", text);
-      dispatch(allText(text))
+          submitNewInput: (text) => {
+          console.log("text in mapDispatch: ", text);
+        dispatch(allText(text))
+      }
     }
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(App);
