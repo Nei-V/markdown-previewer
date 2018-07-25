@@ -1,21 +1,20 @@
-import React, { Component , Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { allText } from './actions/action1';
 import marked from 'marked';
-import {footer} from './constants';
+import { footer } from './constants';
 
 class Footer extends Component {
-  
-  
-  render () {
+
+
+  render() {
     function createFooter(a) {
       return { __html: a }
     }
     return (
-      <div id="footerInReact"  dangerouslySetInnerHTML={createFooter(footer)}>
-     
+      <div id="footerInReact" dangerouslySetInnerHTML={createFooter(footer)}>
       </div>
     )
   }
@@ -65,31 +64,35 @@ class App extends Component {
       <div className="App">
         <header>
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          <h1 className="App-title">Markdown Previewer</h1>
+          <h1>Markdown Previewer</h1>
         </header>
-        <main>
-        <textarea id="editor" value={this.props.input.showText} onChange={this.handleChange} />
-        {/*version 2: in line above value={this.state.showText} if I update field from React*/}
-        <div id="preview" dangerouslySetInnerHTML={createMarkup(d)} />
-        </main>
+        <div id="editorBox">
+        <label id="editorBoxLabel">Write markdown here:</label>
+          <textarea id="editor" value={this.props.input.showText} onChange={this.handleChange} autoFocus />
+          {/*version 2: in line above value={this.state.showText} if I update field from React*/}
+        </div>
+        <div id="previewBox">
+        <label id="previewBoxLabel">This is how it looks:</label>
+          <div id="preview" dangerouslySetInnerHTML={createMarkup(d)} />
+        </div>
         {/*version 2: in line above {this.state.showText} instead if I update field from React*/}
-       <Footer />
+        <Footer />
       </div>
-        );
-      }
-    }
-    
+    );
+  }
+}
+
 const mapStateToProps = (state) => {
-  return {input: state }
-      }
-      
+  return { input: state }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-          submitNewInput: (text) => {
-          console.log("text in mapDispatch: ", text);
-        dispatch(allText(text))
-      }
+    submitNewInput: (text) => {
+      console.log("text in mapDispatch: ", text);
+      dispatch(allText(text))
     }
   }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(App);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

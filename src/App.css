@@ -1,24 +1,73 @@
-
-
 .App {
   display: grid;
   grid-template-columns: 1;
-  grid-template-rows: 3;
-  grid-template-areas: 'header' 'main' 'footer1';
+  grid-template-rows: 4;
+  grid-template-areas: 'header' 'editor' 'viewer' 'footer1';
   grid-gap: 10px;
 }
 
+label {
+  text-align:justify;
+  position:relative;
+  display:block;
+  background-color:#114b5f;
+  background-size:cover;
+  color:#eaf8bf;
+  margin:0;
+}
+#editorBoxLabel:after{
+  content:" \2193";
+}
+
+#editor {
+  width: 99%;
+  min-height: 100%;
+  min-height: 15em;
+  box-sizing:padding-box;
+ }
+
+ #editorBox{
+  width: 99%;
+  min-height: 10em;
+  border: solid;
+  border-color: #686868;
+  box-sizing: padding-box;
+ }
+
+#previewBox {
+  background-color: #028090;
+  border: solid;
+  border-color: #686868;
+}
+
+#preview {
+  text-align: left;
+  margin-left: 3px;
+  color:#eaf8bf;
+}
 
 @media screen and (min-width:800px) {
   .App {
-      grid-template-columns: 2;
-      grid-template-rows: 2;
-      grid-template-areas: 'nav main' 'footer footer1';
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 3;
+    grid-template-areas: 'header header' 'editor viewer' 'footer1 footer1';
+  }
+  header {
+    grid-area: header;
+  }
+  #editorBox {
+    grid-area: editor;
+    }
+  #previewBox {
+    grid-area: viewer;
+  }
+  #editor{
+    height:100%;
+    margin-bottom:-2em;
   }
 }
 
-
-footer {
+#footerInReact {
   text-align: center;
   border-top: 1px solid rgb(45, 45, 68);
   max-height: max-content;
@@ -35,7 +84,18 @@ footer a img {
   margin-bottom: -02.em;
 }
 
+colors {
+  color: #eaf8bf;
+  color: #114b5f;
+  color: #028090;
+  color: #456990;
+  color: #686868;
+}
+
 /*
+
+
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
