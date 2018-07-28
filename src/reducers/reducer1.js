@@ -8,10 +8,7 @@ let a=`# Welcome to my React Markdown Previewer!
 Heres some code, \`<div></div>\`, between 2 backticks.
 
 \`\`\`
-
-
 // this is multi-line code:
-
 
 function anotherExample(firstLine, lastLine) {
   if (firstLine == \'\`\`\`\' && lastLine == \'\`\`\`\') {
@@ -22,7 +19,7 @@ function anotherExample(firstLine, lastLine) {
 \`\`\`
 <b>bold</b>  
 
-You can also make text **bold**... whoa! <b> bold<b>
+You can also make text **bold**... whoa! 
 Or _italic_.
 Or... wait for it... **_both!_**
 And feel free to go crazy ~~crossing stuff out~~.

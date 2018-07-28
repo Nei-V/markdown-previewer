@@ -3,131 +3,83 @@
   grid-template-columns: 1;
   grid-template-rows: 4;
   grid-template-areas: 'header' 'editor' 'viewer' 'footer1';
-  grid-gap: 10px;
-}
+  grid-gap: 10px; }
+
+header > h1 {
+  color: #114b5f; }
 
 label {
-  text-align:justify;
-  position:relative;
-  display:block;
-  background-color:#114b5f;
-  background-size:cover;
-  color:#eaf8bf;
-  margin:0;
-}
-#editorBoxLabel:after{
-  content:" \2193";
-}
+  text-align: justify;
+  position: relative;
+  display: block;
+  background-color: #114b5f;
+  background-size: cover;
+  color: #eaf8bf;
+  margin: 0; }
+
+#editorBoxLabel:after {
+  content: " \2193"; }
 
 #editor {
-  width: 99%;
-  min-height: 100%;
-  min-height: 15em;
-  box-sizing:padding-box;
- }
+  width: 100%;
+  height: 100%;
+  min-height: 18em;
+  margin-top: -1.8em;
+  box-sizing: border-box; }
 
- #editorBox{
-  width: 99%;
-  min-height: 10em;
+#editorBox {
+  width: 100%;
+  min-height: 15em;
   border: solid;
   border-color: #686868;
-  box-sizing: padding-box;
- }
+  box-sizing: padding-box; }
 
 #previewBox {
-  background-color: #028090;
+  background-color: #456990;
   border: solid;
-  border-color: #686868;
-}
+  border-color: #686868; }
 
 #preview {
   text-align: left;
   margin-left: 3px;
-  color:#eaf8bf;
-}
+  color: #eaf8bf; }
+  #preview a {
+    color: #114b5f; }
 
-@media screen and (min-width:800px) {
+@media screen and (min-width: 800px) {
   .App {
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 3;
-    grid-template-areas: 'header header' 'editor viewer' 'footer1 footer1';
-  }
+    grid-template-areas: 'header header' 'editor viewer' 'footer1 footer1'; }
   header {
-    grid-area: header;
-  }
+    grid-area: header; }
   #editorBox {
-    grid-area: editor;
-    }
+    grid-area: editor; }
   #previewBox {
-    grid-area: viewer;
-  }
-  #editor{
-    height:100%;
-    margin-bottom:-2em;
-  }
-}
+    grid-area: viewer; }
+  #editor {
+    margin-top: 0px;
+    height: 98.5%; } }
+
+table, td, th {
+  border: solid;
+  border-width: 2px;
+  border-color: #eaf8bf; }
+
+blockquote p {
+  border-left: solid 2px #eaf8bf; }
+
+pre, code {
+  background-color: #028090; }
 
 #footerInReact {
   text-align: center;
-  border-top: 1px solid rgb(45, 45, 68);
+  border-top: 1px solid #35353f;
   max-height: max-content;
   grid-area: footer1;
-  margin-top: -10px;
-}
-
-footer p {
-  font-size: 1em;
-}
-
-footer a img {
-  height: 2.5em;
-  margin-bottom: -02.em;
-}
-
-colors {
-  color: #eaf8bf;
-  color: #114b5f;
-  color: #028090;
-  color: #456990;
-  color: #686868;
-}
-
-/*
-
-
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-#preview > h1{
-  color:red;
-}
-td {
-  border:solid;
-  border-width:2px;
-  border-color:blue;
-}
-
-*/
+  margin-top: -10px; }
+  #footerInReact p {
+    font-size: 1em; }
+  #footerInReact a img {
+    height: 2.5em;
+    margin-bottom: -0.2em; }

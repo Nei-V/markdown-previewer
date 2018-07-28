@@ -1,0 +1,126 @@
+
+$yellow-color:#eaf8bf;
+$dark-blue-color:#114b5f;
+$lighter-blue-color:#456990;
+$turquoise-like-color:#028090;
+$grey-color:#686868;
+
+
+.App {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 4;
+  grid-template-areas: 'header' 'editor' 'viewer' 'footer1';
+  grid-gap: 10px;
+}
+
+header>h1 {
+  color:$dark-blue-color;
+}
+
+label {
+  text-align:justify;
+  position:relative;
+  display:block;
+  background-color:$dark-blue-color;
+  background-size:cover;
+  color:$yellow-color;
+  margin:0;
+}
+
+#editorBoxLabel:after{
+  content:" \2193";
+}
+
+#editor {
+  width: 100%;
+  height: 100%;
+  min-height: 18em;
+  margin-top:-1.8em;
+  box-sizing:border-box;
+ }
+
+ #editorBox{
+  width: 100%;
+  min-height: 15em;
+  border: solid;
+  border-color: $grey-color;
+  box-sizing: padding-box;
+ }
+
+#previewBox {
+  background-color: $lighter-blue-color;
+  border: solid;
+  border-color: $grey-color;
+}
+
+#preview {
+  text-align: left;
+  margin-left: 3px;
+  color:$yellow-color;
+  a{
+    color:$dark-blue-color;
+  }
+}
+
+@media screen and (min-width:800px) {
+  .App {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 3;
+    grid-template-areas: 'header header' 'editor viewer' 'footer1 footer1';
+  }
+  header {
+    grid-area: header;
+  }
+  #editorBox {
+    grid-area: editor;
+    }
+  #previewBox {
+    grid-area: viewer;
+  }
+  #editor{
+    margin-top:0px;
+    height:98.5%;
+ 
+  }
+}
+
+
+table, td, th {
+  border:solid;
+  border-width:2px;
+  border-color:$yellow-color;
+}
+
+blockquote p{
+  border-left:solid 2px $yellow-color;
+  }
+
+  pre, code{
+    background-color:$turquoise-like-color;
+  }
+
+#footerInReact {
+  text-align: center;
+  border-top: 1px solid rgb(53, 53, 63);
+  max-height: max-content;
+  grid-area: footer1;
+  margin-top: -10px;
+
+    p{
+      font-size:1em;
+    }
+    a img {
+      height:2.5em;
+      margin-bottom: -0.2em;
+    }
+}
+
+
+
+
+
+
+
+
+
